@@ -1,8 +1,10 @@
 package com.tablextractor.utils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,6 +29,14 @@ public class Xtractor {
 		Elements tableElements = doc.getElementsByTag("table");
 		for (Element element : tableElements) {
 			getTableElements(element);
+		}
+		if (tables.size() == 0)
+			System.out.println("There is no tables found in given url");
+		else {
+			File folder = new File(outputPath);
+			for (File file : folder.listFiles())
+				if (file.getName().matches("table.*"))
+					file.delete();
 		}
 
 		for (int i = 0; i < tables.size(); i++) {
