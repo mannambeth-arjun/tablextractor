@@ -9,6 +9,10 @@ import org.apache.commons.io.FileUtils;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * @author Arjun Mannambeth
+ *
+ */
 public class TableXtractor {
 
 	public static void createCsvTable(Element element, String path) {
